@@ -1,0 +1,32 @@
+@use "../../../../scss/abstract/" as *;
+// // @use "../../../../scss/abstract/" as *;
+
+.searchs {
+    border: 1px solid rgb(145, 141, 141);
+    // background-color: red;
+    width: 120%;
+    display: flex;
+    padding: 5px;
+    border-radius: 7px;
+    background: #f5f5f5;
+    margin-left: -17%;
+    @include lgBreakPoint {
+      margin-left: 40px;
+      width: 90%;
+    }
+    @include xsBreakPoint {
+      height: 30px;
+    }
+    .inputs {
+      width: 100%;
+      border: none;
+      background-color: #F5F5F5;
+      @include lgBreakPoint {
+        width: 100%;
+        // border: 1px solid red;
+      }
+      @include mdBreakPoint {
+        width: 100%;
+      }
+    }
+  }
