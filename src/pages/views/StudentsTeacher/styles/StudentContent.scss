@@ -1,0 +1,343 @@
+@use "../../../../scss/abstract/" as *;
+.dropdown-menu {
+  --bs-dropdown-min-width: 3rem !important;
+  --bs-dropdown-padding-y: 0rem !important;
+}
+
+.student-mainpage-container {
+  padding: 1%;
+  width: 100%;
+  @include smBreakPoint {
+    // padding: 1%;
+    height: 100vh;
+  }
+  @include xsBreakPoint {
+    height: fit-content;
+    // overflow: scroll;
+
+    // padding: 1%;
+  }
+  @include mdBreakPoint {
+    height: 100vh;
+
+    // padding: 1%;
+  }
+  @include lgBreakPoint {
+    height: 100vh;
+
+    // padding: 1%;
+  }
+  @include xxlBreakPoint {
+    height: 100vh;
+    // padding: 1%;
+  }
+  @include xxxlBreakPoint {
+    height: 100vh;
+  }
+}
+
+//student header
+.student-Header-main {
+  display: flex;
+  justify-content: space-between;
+  @include smBreakPoint {
+    width: 97%;
+  }
+  @include xsBreakPoint {
+    width: 98%;
+  }
+
+  .student-subheader {
+    margin-left: 1%;
+    .student-header-para-student {
+      font-size: 24px;
+      font-weight: 700;
+      color: #333333;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+    .student-header-para-total {
+      font-size: 16px;
+      font-weight: 500;
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
+  .student-subheader-container-2 {
+    display: flex;
+    padding: 1%;
+    padding-bottom: 0px;
+  }
+  .student-container-2-dropdown {
+    margin-right: 30px;
+  }
+  .dropdown-container-img-2 {
+    background-color: transparent;
+    border: transparent;
+  }
+  .dropdown-menu {
+    width: 310px;
+    margin-left: -250px;
+    cursor: pointer;
+    .dropdown-menu-sub-1 {
+      padding-left: 5%;
+      font-size: 18px;
+      font-weight: 600;
+      padding-right: 5%;
+    }
+    .dropdown-para {
+      margin-bottom: 0px;
+    }
+    .dropdown-sub-para {
+      margin-bottom: 0px;
+      font-size: 17px;
+    }
+    .dropdown-menu-hr {
+      margin-top: 5px;
+      border-top: 2px solid gray;
+      margin-bottom: 5px;
+    }
+    .dropdown-view-section {
+      font-size: 18px;
+      font-weight: 600;
+      color: #0395c4;
+      padding-left: 5%;
+      margin-bottom: 5px;
+    }
+  }
+  .student-head-img-2 {
+    margin-top: 0.35rem;
+    cursor: pointer;
+  }
+}
+
+//student content
+
+.student-content-main-container {
+  background: white;
+  border-radius: 10px;
+  height: 80vh;
+  .student-content-sub-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    @include xsBreakPoint {
+      padding: 4%;
+      width: 807px;
+
+      display: flex;
+      flex-direction: column;
+    }
+    @include smBreakPoint {
+      display: contents;
+    }
+    .student-content-sub-container-1 {
+      display: flex;
+      justify-content: space-between;
+      width: 15rem;
+      align-items: center;
+      margin-top: -1rem;
+    }
+    .student-content-dropdown {
+      width: 10px;
+      @include smBreakPoint {
+        margin-top: 2%;
+        margin-left: 3%;
+      }
+      .student-content-dropdown-toggle {
+        background: #b3e0ee;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 20px;
+        text-align: center;
+        border: none;
+        color: black;
+      }
+      .student-content-dropdownmenu {
+        text-align: center;
+      }
+      .student-content-dropdown-item {
+        font-size: 16px;
+        font-weight: 500;
+      }
+      .dropdown-item-hr {
+        color: #0395c4;
+        margin: 0px 3%;
+      }
+    }
+    .student-content-para-no {
+      margin-bottom: 0px;
+      @include smBreakPoint {
+        display: none;
+      }
+    }
+    .student-content-para-main-container-1 {
+      display: flex;
+      width: 27.5rem;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: -1rem;
+      @include xsBreakPoint {
+        margin-top: 2%;
+        width: 69%;
+      }
+      @include smBreakPoint {
+        margin-top: 2%;
+        margin-left: 2%;
+      }
+      .student-content-para-main-container-2 {
+        display: flex;
+        align-items: center;
+        background: white;
+        border: 1.5px solid black;
+        border-radius: 25px;
+
+        .student-content-para-input {
+          width: 250px;
+          height: 37px;
+          border: none;
+          border-radius: 25px;
+          // @include smBreakPoint {
+          //   margin-left: 30%;
+          // }
+        }
+        .img-search {
+          margin-right: 0.5rem;
+        }
+      }
+      .four-img {
+        @include smBreakPoint {
+          margin-left: 109px;
+          display: flex;
+        }
+        @include xsBreakPoint {
+          display: none;
+        }
+        .sub-img {
+          padding-right: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .student-table-main-container {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1.5px solid #f5f5f5;
+    height: 3rem;
+    margin-top: -1rem;
+    @include smBreakPoint {
+      margin-top: 2%;
+      width: 91%;
+      margin-left: 4%;
+    }
+    .student-table-tr {
+      font-weight: 500;
+      font-size: 16px;
+      text-align: center;
+    }
+    .student-table-th {
+      border: 1.5px solid #f5f5f5;
+      height: 3rem;
+      @include xsBreakPoint {
+        font-size: x-small;
+      }
+      @include smBreakPoint {
+        font-size: x-small;
+      }
+    }
+    .student-table-map-tr {
+      font-weight: 400;
+      font-size: 16px;
+    }
+    .student-table-map-td {
+      border: 1.5px solid #f5f5f5;
+      height: 3rem;
+      padding-left: 1rem;
+      text-align: center;
+      @include xsBreakPoint {
+        font-size: x-small;
+      }
+    }
+    .student-map-td {
+      border: 1px solid #f5f5f5;
+      height: 3rem;
+      display: flex;
+      justify-content: space-evenly;
+    }
+    .dropdown-table {
+      .table-dropdown-toggle {
+        background-color: transparent;
+        border: transparent;
+        .dropdown-img-dot {
+          width: 2rem;
+        }
+      }
+      .table-dropdown-menu {
+        border: 1.5px solid #a2a2a2;
+      }
+      .dropdown-suspend {
+        border-top: 1.5px solid #a2a2a2;
+        border-bottom: 1.5px solid #a2a2a2;
+      }
+    }
+  }
+
+  .pagination-student-content {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    padding-right: 1.5rem;
+  }
+  // .pagination-subcontent {
+  //   display: flex;
+  //   justify-content: space-around;
+  //   width: 10rem;
+  // }
+  // .pagination-subcontent-1 {
+  //   border: 1px solid #b3e0ee;
+  //   border-radius: 50%;
+  //   width: 1.5rem;
+  //   text-align: center;
+  //   background: #b3e0ee;
+  //   font-size: 16px;
+  //   font-weight: 400;
+  // }
+  // .pagination-subcontent-2 {
+  //   border: 1.5px solid #0395c4;
+  //   border-radius: 50%;
+  //   width: 1.5rem;
+  //   text-align: center;
+  //   font-size: 16px;
+  //   font-weight: 400;
+  // }
+}
+
+.paginationBttns {
+  width: 100%;
+  height: 200px;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.paginationBttns a {
+  padding: 8px;
+  margin: 8px;
+  font-size: xx-small;
+  border-radius: 50%;
+  border: 1px solid skyblue;
+  color: skyblue;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+.paginationBttns a:hover {
+  color: white;
+  background-color: skyblue;
+}
+
+.paginationActive a {
+  color: white;
+  background-color: skyblue;
+}

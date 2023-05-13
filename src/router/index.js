@@ -7,7 +7,7 @@ import Loginotp from "../pages/auth/signin/Loginotp";
 import Accountdetails from "../pages/auth/signin/Accountdetails";
 import Verifyaccount from "../pages/auth/signin/Verifyaccount";
 import MainContentPage from "../pages/views";
-import Dashboard from "./../pages/views/dashboard/Dashboard";
+import Dashboard from "../pages/views/dashboard/Dashboard";
 import Forum from "../pages/views/Q&A/Forum";
 import AccountVerification from "../pages/auth/signin/AccountVerification";
 import MainCourse from "../pages/views/content/MainCourse";
@@ -26,18 +26,19 @@ import ProtectedRoutes from "./protected-route";
 import TestSpace from "../pages/views/testSpace/TestSpace";
 import NewsArticle from "../pages/views/newsarticle/NewsAricle";
 import NewsSubpage from "../pages/views/newsarticle/NewsSubpage";
+import StudentsTeacher from "../pages/views/StudentsTeacher/StudentsTeacher";
 
 function IndexRouters() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Mainpage />} />
+        <Route path="/main" element={<Mainpage />} />
         <Route path="/verification_page" element={<Verificationpage />} />
         <Route path="/login_otp" element={<Loginotp />} />
         <Route path="/account_details" element={<Accountdetails />} />
         <Route path="/verify_account" element={<Verifyaccount />} />
         <Route path="/sign_in" element={<Signin />} />
-        <Route path="/account_verify" element={<AccountVerification />} />
+        <Route path="/" element={<AccountVerification />} />
         {/* */}
         <Route path="/forgot_password" element={<Forgotpassword />} />
         <Route path="/reset_password" element={<Resetpassword />} />
@@ -46,6 +47,7 @@ function IndexRouters() {
         <Route path="/" element={<MainContentPage />}>
           <Route element={<ProtectedRoutes />}>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path='/student' element={<StudentsTeacher/>}/>
             <Route path="/content" element={<MainCourse />}>
               <Route path="/content/task" element={<MyTaskContinuePage />} />
             </Route>

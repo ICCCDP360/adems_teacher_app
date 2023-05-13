@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./styles/Sidebar.scss";
+import studentBlack from '../../assets/images/student.svg'
 import dashboardWhite from "../../assets/images/dashboardWhite.svg";
 import dashboardBlack from "../../assets/images/dashboardBlack.svg";
 import contentWhite from "../../assets/images/contentWhite.svg";
@@ -31,6 +32,10 @@ function Sidebar() {
 
   const dashboardPage = () => {
     navigate("/dashboard");
+  };
+
+  const studentPage = () => {
+    navigate("/student");
   };
 
   const contentPage = () => {
@@ -98,6 +103,19 @@ function Sidebar() {
                   <img src={dashboardBlack} />
                 <p className="sidetext-content">
                   {language == "english" ? "Dashboard" : "தகவல்பலகை"}
+                </p>
+              </div>
+              <div
+                className={
+                  location.pathname === "/student"
+                    ? "single-sidecontent-active"
+                    : "single-sidecontent"
+                }
+                onClick={studentPage}
+              >
+                  <img src={studentBlack} />
+                <p className="sidetext-content">
+                  {language == "english" ? "Student" : "தகவல்பலகை"}
                 </p>
               </div>
               <div

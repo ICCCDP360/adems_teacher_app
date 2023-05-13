@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
 
 import "../styles/accountVerification.scss";
@@ -16,7 +16,7 @@ import { toast } from "react-toastify";
 function AccountVerification() {
   const navigate = useNavigate();
   // const [error, setError] = useState("");
-  const { state } = useLocation();
+  // const { state } = useLocation();
   const [passwordType, setPasswordType] = useState("password");
 
   const language = localStorage.getItem("lang") || "english";
@@ -47,7 +47,7 @@ function AccountVerification() {
   const slideChange = (values) => {
     return new Promise((resolve, reject) => {
       let trigger = {
-        stu_id: state.id._id,
+        stu_id: '645e30675eb7496691de0f78',
         passcode: values,
       };
 
@@ -90,11 +90,11 @@ function AccountVerification() {
     setPasswordType("password");
   };
 
-  const forgotData = () => {
-    navigate("/forgot_password", {
-      state: { name: state.id.name, number: state.id.phone },
-    });
-  };
+  // const forgotData = () => {
+  //   navigate("/forgot_password", {
+  //     state: { name: state.id.name, number: state.id.phone },
+  //   });
+  // };
   return (
     <div className="signIn-container">
       <div
@@ -134,7 +134,7 @@ function AccountVerification() {
       <div className="center-container-main">
         <div className="whole-color-border">
           <div className="center-heading">
-            <p className="header-center-content">Student</p>
+            <p className="header-center-content">Teacher</p>
           </div>
           <div className="center-inner-full-container">
             <div className="leftside-container-main">
@@ -147,10 +147,8 @@ function AccountVerification() {
                     <input
                       className="input-field-user"
                       type="text"
-                      value={
-                        state.id.name.charAt(0).toUpperCase() +
-                        state.id.name.slice(1)
-                      }
+                      // value={formik.values.name}
+                      onChange={formik.handleChange}
                     />
                   </div>
                   <p className="signin-username">Password</p>
@@ -159,13 +157,7 @@ function AccountVerification() {
                       name="password"
                       value={formik.values.password}
                       onChange={formik.handleChange}
-                      // onChange={(event) => {
-                      //   SetPasscode(event.target.value);
-                      //   // console.log(event.target.value);
-                      // }}
                       className="input-field-user"
-                      // type="password"
-                      // name="password"
                       type={passwordType}
                       placeholder="Password"
                     />
@@ -206,7 +198,7 @@ function AccountVerification() {
                   <p
                     className="d-flex justify-content-end"
                     style={{ color: "#0395C4", cursor: "pointer" }}
-                    onClick={forgotData}
+                    // onClick={forgotData}
                   >
                     Forgot Password ?
                   </p>

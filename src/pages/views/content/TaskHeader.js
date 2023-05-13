@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./styles/TaskHeader.scss";
 import Notification from "../../../assets/images/notify.svg";
 import logo from "../../../assets/avatar.svg";
 // import popup from "../../../assets/images/popup.svg";
-import logo1 from "../../../assets/avatar.svg";
 import key from "../../../assets/images/key.svg";
 import switchacc from "../../../assets/images/switch.svg";
 import Profile from "../../../assets/avatar.svg";
 import Language from "../../../assets/images/language.svg";
-import Setting from "../../../assets/images/setting.svg";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router";
@@ -19,7 +17,6 @@ import logos from "../../../assets/avatar.svg";
 //   profiledetails,
 // } from "../../../services/dashboard";
 
-import dashboardServices from "../../../services/dashboard";
 
 function TaskHeader() {
   const [show, setShow] = useState(false);
@@ -29,50 +26,16 @@ function TaskHeader() {
   const handleClose = () => setShow(false);
 
   const language = localStorage.getItem("lang") || "english";
-  const [userDetails, SetuserDetails] = useState([]);
-  // const [userOtherDetails, SetUserOtherDetails] = useState([]);
-
-  const other = localStorage.getItem("otherAccDetails");
-  const otherDetails = JSON.parse(other);
-
-  useEffect(() => {
-    // console.log(JSON.parse(localStorage.getItem("userDetails")), userDetails);
-    SetuserDetails(JSON.parse(localStorage.getItem("userDetails")));
-    // SetUserOtherDetails(JSON.parse(localStorage.getItem("otherAccDetails")));
-  }, []);
 
   const switchAccount = () => {
-    return new Promise((resolve, reject) => {
-      let data = {
-        phone: JSON.parse(localStorage.getItem("parentDetails")).phone,
-      };
-      dashboardServices
-        .DashboardSwitchAcc(data)
-        .then((response) => {
-          resolve(response);
-          navigate("/sign_in", {
-            state: { id: response, number: data.phone },
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-          reject(false);
-        });
-    });
+    navigate('/')
   };
-  const name = JSON.parse(localStorage.getItem("otherAccDetails"))[0].name;
-  const id = JSON.parse(localStorage.getItem("otherAccDetails"))[0]._id;
 
-  const otherAcc = () => {
-    let data = {
-      name: name,
-      _id: id,
-    };
+  function Schoolprofile() {
+    navigate("/profile");
+  }
 
-    navigate("/account_verify", {
-      state: { id: data },
-    });
-  };
+
   const englishLang = () => {
     localStorage.setItem("lang", "english");
     window.location.reload();
@@ -83,29 +46,6 @@ function TaskHeader() {
     window.location.reload();
   };
 
-  // const [fullData, setFullData] = useState([]);
-
-  const profileData = () => {
-    return new Promise((resolve, reject) => {
-      const datas = localStorage.getItem("userid");
-
-      dashboardServices
-        .profiledetails(JSON.parse(datas))
-
-        .then((res) => {
-          resolve(res);
-          navigate("/profile", { state: { data: res } });
-
-          // setParent(res.parentDetails);
-        })
-        .catch((err) => {
-          console.log(err);
-          reject(false);
-        });
-    });
-  };
-
-  const forms = userDetails?.dp;
 
   return (
     <>
@@ -120,15 +60,11 @@ function TaskHeader() {
             className="rightside-taskcontainer"
             style={{ cursor: "pointer" }}
           >
-
-            <div>
-              <img src={Setting} className="mt-2"/>
-            </div>
             <div>
               <img
                 src={logos}
                 onClick={handleShow}
-                style={{ width: "35px", height: "35px" }}
+                style={{ width: "35px", height: "35px",marginLeft:'100%'}}
               />
             </div>
           </div>
@@ -302,32 +238,19 @@ function TaskHeader() {
           </div>
         </div>
       </div>
-      <Modal className="modal-first-container" show={show} onHide={handleClose}>
-        <Modal.Body>
+      <Modal style={{width:'18%',marginLeft:'80%',marginTop:'2%'}} show={show} onHide={handleClose}>
+        <Modal.Body style={{textAlign:'center'}}>
           <div className="d-flex justify-content-center">
-            {forms ? (
-              <>
-                <img
-                  src={userDetails.dp}
-                  width="60px"
-                  height="60px"
-                  style={{ borderRadius: "50%" }}
-                />
-              </>
-            ) : (
-              <>
                 <img src={logo} style={{ width: "20%" }} />
-              </>
-            )}
           </div>
           <h6 className="d-flex justify-content-center ">
-            {language == "english" ? `${userDetails.name}` : "பாலா"}
+            {language == "english" ? `Teacher` : "பாலா"}
           </h6>
           <h6 className="d-flex justify-content-center ">
-            {userDetails.email}
+            teacher@gmail.com
           </h6>
           <Button
-            onClick={profileData}
+            onClick={Schoolprofile}
             className="modal-second-container mt-2"
             // variant="outline-primary "
             style={{
@@ -335,15 +258,15 @@ function TaskHeader() {
               color: "#9C1303",
               width: "88px",
               borderRaius: "10px",
-              height: "45px",
+              height: "40px",
               border: "1px solid #9C1303",
               marginLeft: "2%",
             }}
           >
             {language == "english" ? "View" : "பார்வை"}
           </Button>
-          <hr className="horizantal-first" />
-
+          <hr className="horizantal-first mb-0 " />
+{/* 
           {otherDetails.map((data, index) => (
             <>
               <div
@@ -356,8 +279,8 @@ function TaskHeader() {
               </div>
               <hr className="horizontal-second" />
             </>
-          ))}
-          <div className="d-flex justify-content-center modal-four-container point">
+          ))} */}
+          <div style={{cursor:'pointer'}} className="d-flex justify-content-center modal-four-container point">
             <img src={key} />
             <h6
               className="mt-2 ms-3 "
@@ -369,14 +292,14 @@ function TaskHeader() {
             </h6>
           </div>
           <hr
-            className="horizontal-third"
+            className="horizontal-third mt-2 mb-0"
             // style={{
             //   border: "2px solid grey",
             //   marginBottom: "0%",
             //   marginTop: "0%",
             // }}
           />
-          <div className="d-flex justify-content-center point">
+          <div style={{cursor:'pointer'}} className="d-flex justify-content-center point">
             <img src={switchacc} />
             <h6 className="mt-2 ms-3 " onClick={switchAccount}>
               {language == "english" ? "Switch Account" : "கணக்கு சேர்க்க"}

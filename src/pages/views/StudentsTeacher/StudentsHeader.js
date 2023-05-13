@@ -1,43 +1,52 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../../../assets/avatar.svg";
 import key from "../../../assets/images/key.svg";
 import switchacc from "../../../assets/images/switch.svg";
-import { useNavigate } from "react-router";
+import "./styles/StudentContent.scss";
 import { Button, Modal } from "react-bootstrap";
-// import "./styles/TestSpace.scss";
 
-function NewsHeader() {
+const StudentsHeader = () => {
+
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
-  const language = localStorage.getItem("lang") || "english";
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+
+  const language = localStorage.getItem("lang") || "english";
 
   const switchAccount = () => {
     navigate('/')
   };
 
-  
   function Schoolprofile() {
     navigate("/profile");
   }
 
   return (
-    <div className="profile-header-main-container">
-      <div className="task-header-container">
-        <div className="task-head-text">
-          <p className="profile-lang-1 mt-4">
-            {language == "english" ? "News Article" : "சோதனை பகுதி"}
+    <div>
+      <div className="student-Header-main">
+        <div className="student-subheader">
+          <p className="student-header-para-student">Students</p>
+          <p className="student-header-para-total">
+            Total Number of Students: 1395
           </p>
         </div>
-        <div className="rightside-taskcontainer" style={{ cursor: "pointer" }}>
+        <div className="student-subheader-container-2">
           <div>
-                <img
-                  src={logo}
-                  style={{ width: "35px", height: "35px",marginLeft:'100%' }}
-                  onClick={handleShow}
-                />
+            <img
+              src={logo}
+              width="30px"
+              height="30px"
+              className="student-head-img-2"
+              style={{
+                cursor: "pointer",
+                marginTop: "0.35rem",
+                borderRadius: "50%",
+              }}
+              onClick={handleShow}
+            />
           </div>
         </div>
       </div>
@@ -96,8 +105,9 @@ function NewsHeader() {
           </div>
         </Modal.Body>
       </Modal>
+      <hr />
     </div>
   );
-}
+};
 
-export default NewsHeader;
+export default StudentsHeader;

@@ -2,42 +2,68 @@ import React, { useState } from "react";
 import logo from "../../../assets/avatar.svg";
 import key from "../../../assets/images/key.svg";
 import switchacc from "../../../assets/images/switch.svg";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
+import "./styles/Dashboard.scss";
 import { Button, Modal } from "react-bootstrap";
-// import "./styles/TestSpace.scss";
 
-function NewsHeader() {
+function DashboardHeader() {
   const [show, setShow] = useState(false);
-  const navigate = useNavigate();
-  const language = localStorage.getItem("lang") || "english";
 
+  const navigate = useNavigate();
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+  const language = localStorage.getItem("lang") || "english";
+
+  function Schoolprofile() {
+    navigate("/profile");
+  }
 
   const switchAccount = () => {
     navigate('/')
   };
 
-  
-  function Schoolprofile() {
-    navigate("/profile");
-  }
-
   return (
-    <div className="profile-header-main-container">
-      <div className="task-header-container">
-        <div className="task-head-text">
-          <p className="profile-lang-1 mt-4">
-            {language == "english" ? "News Article" : "சோதனை பகுதி"}
+    <div className="main-container-instructor">
+      <div className="d-flex justify-content-between">
+        <div className="instructor-header-main-container">
+          <p
+            className="para-teacher-instructor-header"
+            // style={{
+            //   fontSize: "24px",
+            //   fontWeight: "700",
+            //   color: "#333333",
+            //   marginTop: "0px",
+            //   marginBottom: "0px",
+            // }}
+          >
+            Welcome, Arjun
+          </p>
+          <p
+            className="para-total"
+            // style={{
+            //   fontSize: "16px",
+            //   fontWeight: "500",
+            //   marginTop: "0px",
+            //   marginBottom: "0px",
+            // }}
+          >
+            Last logged in: 18 Jan, 2023 06:00 pm
           </p>
         </div>
-        <div className="rightside-taskcontainer" style={{ cursor: "pointer" }}>
+        <div className="instructor-header-main-container-1">
           <div>
-                <img
-                  src={logo}
-                  style={{ width: "35px", height: "35px",marginLeft:'100%' }}
-                  onClick={handleShow}
-                />
+            <img
+              src={logo}
+              width="30px"
+              height="30px"
+              className="school-img"
+              style={{
+                cursor: "pointer",
+                marginTop: "0.35rem",
+                borderRadius: "50%",
+              }}
+              onClick={handleShow}
+            />
           </div>
         </div>
       </div>
@@ -69,6 +95,20 @@ function NewsHeader() {
             {language == "english" ? "View" : "பார்வை"}
           </Button>
           <hr className="horizantal-first mb-0 " />
+{/* 
+          {otherDetails.map((data, index) => (
+            <>
+              <div
+                onClick={otherAcc}
+                key={index}
+                className="d-flex justify-content-center modal-third-container point"
+              >
+                <img src={logo1} className="logo-img" />
+                <h6 className="mt-2 ms-3">{data.email}</h6>
+              </div>
+              <hr className="horizontal-second" />
+            </>
+          ))} */}
           <div style={{cursor:'pointer'}} className="d-flex justify-content-center modal-four-container point">
             <img src={key} />
             <h6
@@ -96,8 +136,9 @@ function NewsHeader() {
           </div>
         </Modal.Body>
       </Modal>
+      <hr />
     </div>
   );
 }
 
-export default NewsHeader;
+export default DashboardHeader;
